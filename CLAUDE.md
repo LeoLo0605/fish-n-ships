@@ -101,6 +101,62 @@ scene.configure(with: viewModel)
 
 ---
 
+## Domain reference
+
+### Symbol weights
+
+| Symbol | Weight | Placeholder colour |
+|---|---|---|
+| clownfish | 20 | orange `#E8541A` |
+| octopus | 15 | purple `#7B3FB5` |
+| seaTurtle | 15 | green `#2A8A4A` |
+| blueTang | 15 | blue `#1A6AB5` |
+| ace | 18 | gold `#C8A020` |
+| king | 12 | brown `#8A7040` |
+| wild | 3 | cyan `#2ACFCF` |
+| pearl | 2 | lavender `#D0D0FF` |
+
+### GameViewModel initial state
+
+| Property | Initial | Notes |
+|---|---|---|
+| `balance` | 1000.00 | Deducted on each spin |
+| `bet` | 1.00 | Steps: 0.50 / 1 / 2 / 5 / 10 / 20 / 50 |
+| `lastWin` | 0.00 | Always 0 in M1 — win logic not yet implemented |
+| `isSpinning` | false | Guard prevents concurrent spins |
+
+### Key layout constants
+
+| Constant | Value | Location |
+|---|---|---|
+| Cell size | 64×64 pt | `SymbolNode.swift` |
+| Grid gap | 4 pt | `ReelNode.swift` |
+| Reel stagger delay | 0.15 s | `GameScene.swift` |
+| Spin cycle duration | 0.9 s | `ReelNode.swift` |
+| Background colour | `#040D19` | `GameScene.swift` |
+
+---
+
+## What is and isn't implemented
+
+### Done (Milestone 1)
+- Data models: `SlotSymbol`, `GridCell`, `ReelGrid` with weighted randomisation
+- `GameViewModel` with balance, bet stepping, spin state guard
+- SwiftUI Layout B: title bar + SpriteKit view + HUD row + controls
+- SpriteKit 5×3 grid with staggered colour-cycling spin animation and bounce
+- 16 unit tests (models + ViewModel; no Scene tests)
+
+### Deferred to future milestones
+- Win detection and pay table
+- Real pixel-art sprite assets (currently solid-colour placeholders)
+- Pearl / frame / build mechanic (`frameLevel` field is reserved)
+- Bonus game ("Kraken's Awakening")
+- Sound effects and music
+- Data persistence (balance resets on launch)
+- Additional symbols (Queen, Jack, 10, 9 — present in spritesheet, not in enum)
+
+---
+
 ## Specs and plans
 
 Design specs and implementation plans live under `docs/superpowers/`:

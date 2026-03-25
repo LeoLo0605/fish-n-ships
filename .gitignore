@@ -38,5 +38,12 @@ fastlane/test_output
 .Trashes
 Thumbs.db
 
+# xtool build artifacts
+xtool/
+
+# Windows alternate data streams (WSL artefacts)
+*:Zone.Identifier
+*:mshield
+
 # Superpowers brainstorm session files (keep specs/plans)
 .superpowers/brainstorm/

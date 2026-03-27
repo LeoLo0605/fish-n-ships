@@ -17,11 +17,14 @@ final class GameScene: SKScene {
 
     weak var viewModel: GameViewModel?
     private var reelNodes: [ReelNode] = []
+    private var gridContainer: SKNode?
 
     // MARK: - Lifecycle
 
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(red: 0.016, green: 0.051, blue: 0.098, alpha: 1) // #040D19
+        // Origin at scene centre — grid position is size-independent.
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
         // buildGrid is called from configure(with:) so it has access to initial symbols.
         // If viewModel is already set (unlikely at this point), wire immediately.
         if let vm = viewModel { configure(with: vm) } else { buildGrid() }
@@ -42,19 +45,16 @@ final class GameScene: SKScene {
     private func buildGrid(initialGrid: [GridCell]? = nil) {
         reelNodes.removeAll()
         removeAllChildren()
+        gridContainer = nil
 
-        // Background
-        let bg = SKSpriteNode(color: .black, size: self.size)
-        bg.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        bg.zPosition = -1
-        addChild(bg)
-
-        // Grid container — centred in scene
+        // Grid container — origin is scene centre (anchorPoint 0.5, 0.5), so this is size-independent.
+        // Row 0 (top) at y = +(gridHeight - cellSize)/2, columns grow rightward from x = -(gridWidth - cellSize)/2.
         let container = SKNode()
         container.position = CGPoint(
-            x: (size.width - Layout.gridWidth) / 2 + Layout.cellSize / 2,
-            y: (size.height + Layout.gridHeight) / 2 - Layout.cellSize / 2
+            x: -(Layout.gridWidth  - Layout.cellSize) / 2,   // left-align columns from centre
+            y:  (Layout.gridHeight - Layout.cellSize) / 2    // top row above centre
         )
+        gridContainer = container
         addChild(container)
 
         // Build 5 ReelNodes — use ViewModel's initial grid if available, else random

@@ -49,31 +49,34 @@ final class ReelNode: SKCropNode {
     func spinAnimation(finalSymbols: [SlotSymbol], delay: TimeInterval, completion: @escaping () -> Void) {
         let cycleColors = SlotSymbol.allCases.map { $0.placeholderUIColor }
         var colorIndex = 0
+        let cycleKey = "spin-cycle-\(column)"
 
-        // Color-cycling action (fast spin feel)
-        let cycleAction = SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run { [weak self] in
-                    colorIndex = (colorIndex + 1) % cycleColors.count
-                    let c = cycleColors[colorIndex]
-                    self?.symbolNodes.forEach { $0.color = c; $0.colorBlendFactor = 1.0 }
-                },
-                SKAction.wait(forDuration: 0.06)
-            ])
-        )
-
-        // Main sequence
+        // Main sequence — cycle is run separately so it can be stopped independently
         let sequence = SKAction.sequence([
             // Wait for stagger
             SKAction.wait(forDuration: delay),
+            // Start color-cycling on a separate action key
+            SKAction.run { [weak self] in
+                guard let self else { return }
+                let cycle = SKAction.repeatForever(
+                    SKAction.sequence([
+                        SKAction.run { [weak self] in
+                            colorIndex = (colorIndex + 1) % cycleColors.count
+                            self?.symbolNodes.forEach {
+                                $0.color = cycleColors[colorIndex]
+                                $0.colorBlendFactor = 1.0
+                            }
+                        },
+                        SKAction.wait(forDuration: 0.06)
+                    ])
+                )
+                self.run(cycle, withKey: cycleKey)
+            },
             // Fast cycling phase (0.9 s)
-            SKAction.group([
-                cycleAction,
-                SKAction.wait(forDuration: 0.9)
-            ]),
+            SKAction.wait(forDuration: 0.9),
             // Stop cycle and snap to final symbols
             SKAction.run { [weak self] in
-                self?.removeAllActions()
+                self?.removeAction(forKey: cycleKey)
                 self?.updateSymbols(finalSymbols)
             },
             // Bounce: scale up slightly then back

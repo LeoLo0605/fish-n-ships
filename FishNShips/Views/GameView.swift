@@ -24,10 +24,9 @@ struct GameView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color(hex: 0x0D1F3A))
 
-                // SpriteKit reel grid
+                // SpriteKit reel grid — expands to fill available space
                 SpriteView(scene: scene)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 260)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color(hex: 0x040D19))
 
                 // Balance / Win / Bet row
@@ -43,8 +42,7 @@ struct GameView: View {
                     onSpin: { viewModel.spin() },
                     onBetChange: { viewModel.adjustBet($0) }
                 )
-
-                Spacer()
+                .padding(.bottom, 16)
             }
         }
         .onAppear {

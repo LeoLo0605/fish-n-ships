@@ -33,7 +33,7 @@ final class ReelNode: SKCropNode {
 
     // MARK: - Symbol Update
 
-    func updateSymbols(_ symbols: [SlotSymbol], useTexture: Bool = false) {
+    func updateSymbols(_ symbols: [SlotSymbol], useTexture: Bool = true) {
         for (i, sym) in symbols.prefix(3).enumerated() {
             symbolNodes[i].configure(symbol: sym, useTexture: useTexture)
         }
@@ -74,7 +74,7 @@ final class ReelNode: SKCropNode {
             },
             // Fast cycling phase (0.9 s)
             SKAction.wait(forDuration: 0.9),
-            // Stop cycle and snap to final symbols
+            // Stop cycle and snap to final symbols (useTexture: true reveals sprites)
             SKAction.run { [weak self] in
                 self?.removeAction(forKey: cycleKey)
                 self?.updateSymbols(finalSymbols)

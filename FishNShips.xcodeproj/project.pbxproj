@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02DC7A6AE6FF806C45B0E8FB /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC250E934A75F55E52C5D8EE /* GameViewModelTests.swift */; };
+		2FFB52117BC1C6664E386AC9 /* SlotSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FD5FB736A5CF54AC14AF0 /* SlotSymbol.swift */; };
+		39C36089EB9F0A73741831C0 /* FishNShipsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494DC97365DB741957C634E9 /* FishNShipsApp.swift */; };
+		3E91E6EF226B23DF0845B623 /* SpinButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2971C7B1C0C070342502BA1 /* SpinButtonView.swift */; };
+		52E3A6DB02D528C95D0391B7 /* SlotSymbolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB62F1FEA6417A8DB9AD2FC8 /* SlotSymbolTests.swift */; };
+		667C0C3EEA7A47328A60760A /* SymbolNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CC92250AAA928702C8A715 /* SymbolNode.swift */; };
+		8674B2D30B22D5CCC9BF9C91 /* ReelGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F78FA1F7D974C9585BA49E /* ReelGridTests.swift */; };
+		8F237CD2D0C2BCF4C400BAF5 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591869979388F176FB5D6AAE /* HUDView.swift */; };
+		90D42039F838234201BF74F2 /* ReelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2051425AF92F5A8D02D0BE23 /* ReelNode.swift */; };
+		951B10588BBCCE579052A26D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B100F3C2056F3B8B4961C0E /* GameView.swift */; };
+		A4E6E395C8BB6D488D4D17CE /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D8AA0429E94207EA09945 /* SpriteKit.framework */; };
+		A7DFFEA4FB4E78177C5FB4F1 /* ReelGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */; };
+		BFD5C8A5DE5F0A317E4F0E7B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD5F50689BB15AAE656B0D /* GameViewModel.swift */; };
+		C76CD984A53401C57B79F523 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB60596ED893EAC28AF03444 /* ContentView.swift */; };
+		F3D3C47B34C9002379ABA7AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA805B92B1C5E271E54F550B /* GameScene.swift */; };
+		F6344661F1DEC72E8729B272 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A63E916A1C3AF059DD6238 /* GridCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD0C6CE7639A38B21666182B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA823B82EE80A89B66B64476 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF069A06D1A6D9A29EC5ED5D;
+			remoteInfo = FishNShips;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		018D8AA0429E94207EA09945 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		0DFD5F50689BB15AAE656B0D /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		2051425AF92F5A8D02D0BE23 /* ReelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelNode.swift; sourceTree = "<group>"; };
+		2B100F3C2056F3B8B4961C0E /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		494DC97365DB741957C634E9 /* FishNShipsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishNShipsApp.swift; sourceTree = "<group>"; };
+		4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelGrid.swift; sourceTree = "<group>"; };
+		57A63E916A1C3AF059DD6238 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		591869979388F176FB5D6AAE /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
+		76CC92250AAA928702C8A715 /* SymbolNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolNode.swift; sourceTree = "<group>"; };
+		9BDBC518E99EEE788117AF9D /* FishNShipsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FishNShipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFD789D7A6D5A0BF7CE1FD9B /* FishNShips.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FishNShips.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2971C7B1C0C070342502BA1 /* SpinButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinButtonView.swift; sourceTree = "<group>"; };
+		BA805B92B1C5E271E54F550B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		BB60596ED893EAC28AF03444 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EC250E934A75F55E52C5D8EE /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
+		F4F78FA1F7D974C9585BA49E /* ReelGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelGridTests.swift; sourceTree = "<group>"; };
+		FB62F1FEA6417A8DB9AD2FC8 /* SlotSymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotSymbolTests.swift; sourceTree = "<group>"; };
+		FB9FD5FB736A5CF54AC14AF0 /* SlotSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotSymbol.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6A2F3E626451CDF7E693EF5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4E6E395C8BB6D488D4D17CE /* SpriteKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0DB3ABBA6D3F43FDBBD0C812 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB60596ED893EAC28AF03444 /* ContentView.swift */,
+				2B100F3C2056F3B8B4961C0E /* GameView.swift */,
+				591869979388F176FB5D6AAE /* HUDView.swift */,
+				B2971C7B1C0C070342502BA1 /* SpinButtonView.swift */,
+			);
+			name = Views;
+			path = FishNShips/Views;
+			sourceTree = "<group>";
+		};
+		1397354028A1FD7759E223E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DB3ABBA6D3F43FDBBD0C812 /* Views */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		42EF13C5F03C53EBE7A54931 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BDFEC2E4F86DF444F7ED9936 /* ViewModels */,
+				998FF7A65D88AE7F0B6104BE /* ViewModels */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		688D7AD27F6D87BC646C933C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFD789D7A6D5A0BF7CE1FD9B /* FishNShips.app */,
+				9BDBC518E99EEE788117AF9D /* FishNShipsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A991B2ADA9288CA7E6C6D75 = {
+			isa = PBXGroup;
+			children = (
+				E657A2DCDD4EB27A0BAFB170 /* App */,
+				FD42E233B2E341967FE49155 /* Models */,
+				99412ED88D9B7B7D8DA94945 /* Scene */,
+				42EF13C5F03C53EBE7A54931 /* ViewModels */,
+				1397354028A1FD7759E223E7 /* Views */,
+				8D5A32CE314A29AB1A04C7F9 /* Frameworks */,
+				688D7AD27F6D87BC646C933C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8D5A32CE314A29AB1A04C7F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				018D8AA0429E94207EA09945 /* SpriteKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99412ED88D9B7B7D8DA94945 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				EC21D5C71059311FC3AEB64A /* Scene */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		998FF7A65D88AE7F0B6104BE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EC250E934A75F55E52C5D8EE /* GameViewModelTests.swift */,
+			);
+			name = ViewModels;
+			path = FishNShipsTests/ViewModels;
+			sourceTree = "<group>";
+		};
+		BDFEC2E4F86DF444F7ED9936 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0DFD5F50689BB15AAE656B0D /* GameViewModel.swift */,
+			);
+			name = ViewModels;
+			path = FishNShips/ViewModels;
+			sourceTree = "<group>";
+		};
+		D2BCBF2963EEE605EEA9F564 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				494DC97365DB741957C634E9 /* FishNShipsApp.swift */,
+			);
+			name = App;
+			path = FishNShips/App;
+			sourceTree = "<group>";
+		};
+		E657A2DCDD4EB27A0BAFB170 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D2BCBF2963EEE605EEA9F564 /* App */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		EC21D5C71059311FC3AEB64A /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				BA805B92B1C5E271E54F550B /* GameScene.swift */,
+				2051425AF92F5A8D02D0BE23 /* ReelNode.swift */,
+				76CC92250AAA928702C8A715 /* SymbolNode.swift */,
+			);
+			name = Scene;
+			path = FishNShips/Scene;
+			sourceTree = "<group>";
+		};
+		EF6F19F087FFB96A2EDDC41F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4F78FA1F7D974C9585BA49E /* ReelGridTests.swift */,
+				FB62F1FEA6417A8DB9AD2FC8 /* SlotSymbolTests.swift */,
+			);
+			name = Models;
+			path = FishNShipsTests/Models;
+			sourceTree = "<group>";
+		};
+		F9954FB820D36F12CE64B072 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				57A63E916A1C3AF059DD6238 /* GridCell.swift */,
+				4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */,
+				FB9FD5FB736A5CF54AC14AF0 /* SlotSymbol.swift */,
+			);
+			name = Models;
+			path = FishNShips/Models;
+			sourceTree = "<group>";
+		};
+		FD42E233B2E341967FE49155 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9954FB820D36F12CE64B072 /* Models */,
+				EF6F19F087FFB96A2EDDC41F /* Models */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00170BCF60C889B40ECD429D /* FishNShipsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B70DD0F27FA350246D62EDA /* Build configuration list for PBXNativeTarget "FishNShipsTests" */;
+			buildPhases = (
+				D7F800A385099A59CE83EB15 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A604D3E415389E1353AA87FC /* PBXTargetDependency */,
+			);
+			name = FishNShipsTests;
+			packageProductDependencies = (
+			);
+			productName = FishNShipsTests;
+			productReference = 9BDBC518E99EEE788117AF9D /* FishNShipsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF069A06D1A6D9A29EC5ED5D /* FishNShips */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20157CCC761C8D388AAC971B /* Build configuration list for PBXNativeTarget "FishNShips" */;
+			buildPhases = (
+				9C4867C1F93AD06CE9E81BF1 /* Sources */,
+				6A2F3E626451CDF7E693EF5E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FishNShips;
+			packageProductDependencies = (
+			);
+			productName = FishNShips;
+			productReference = AFD789D7A6D5A0BF7CE1FD9B /* FishNShips.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA823B82EE80A89B66B64476 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = B887C4049AF3D84013285F20 /* Build configuration list for PBXProject "FishNShips" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 7A991B2ADA9288CA7E6C6D75;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 688D7AD27F6D87BC646C933C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF069A06D1A6D9A29EC5ED5D /* FishNShips */,
+				00170BCF60C889B40ECD429D /* FishNShipsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C4867C1F93AD06CE9E81BF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C76CD984A53401C57B79F523 /* ContentView.swift in Sources */,
+				39C36089EB9F0A73741831C0 /* FishNShipsApp.swift in Sources */,
+				F3D3C47B34C9002379ABA7AA /* GameScene.swift in Sources */,
+				951B10588BBCCE579052A26D /* GameView.swift in Sources */,
+				BFD5C8A5DE5F0A317E4F0E7B /* GameViewModel.swift in Sources */,
+				F6344661F1DEC72E8729B272 /* GridCell.swift in Sources */,
+				8F237CD2D0C2BCF4C400BAF5 /* HUDView.swift in Sources */,
+				A7DFFEA4FB4E78177C5FB4F1 /* ReelGrid.swift in Sources */,
+				90D42039F838234201BF74F2 /* ReelNode.swift in Sources */,
+				2FFB52117BC1C6664E386AC9 /* SlotSymbol.swift in Sources */,
+				3E91E6EF226B23DF0845B623 /* SpinButtonView.swift in Sources */,
+				667C0C3EEA7A47328A60760A /* SymbolNode.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7F800A385099A59CE83EB15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02DC7A6AE6FF806C45B0E8FB /* GameViewModelTests.swift in Sources */,
+				8674B2D30B22D5CCC9BF9C91 /* ReelGridTests.swift in Sources */,
+				52E3A6DB02D528C95D0391B7 /* SlotSymbolTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A604D3E415389E1353AA87FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF069A06D1A6D9A29EC5ED5D /* FishNShips */;
+			targetProxy = CD0C6CE7639A38B21666182B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		183547F555481EDFF76DAD1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fishnships.FishNShips;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2E6D080DF905B825F526126B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPAD = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8B171016B1733A8A9E7C13BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fishnships.FishNShips;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9D0EE02CD12E4B7700F4032B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fishnships.FishNShipsTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FishNShips.app/FishNShips";
+			};
+			name = Debug;
+		};
+		9F5EA97F15F4337E6520C82D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fishnships.FishNShipsTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FishNShips.app/FishNShips";
+			};
+			name = Release;
+		};
+		D14D35846CE40C8E8A9D36A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20157CCC761C8D388AAC971B /* Build configuration list for PBXNativeTarget "FishNShips" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				183547F555481EDFF76DAD1E /* Debug */,
+				8B171016B1733A8A9E7C13BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4B70DD0F27FA350246D62EDA /* Build configuration list for PBXNativeTarget "FishNShipsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D0EE02CD12E4B7700F4032B /* Debug */,
+				9F5EA97F15F4337E6520C82D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B887C4049AF3D84013285F20 /* Build configuration list for PBXProject "FishNShips" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D14D35846CE40C8E8A9D36A8 /* Debug */,
+				2E6D080DF905B825F526126B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA823B82EE80A89B66B64476 /* Project object */;
+}

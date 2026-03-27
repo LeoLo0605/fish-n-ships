@@ -17,10 +17,11 @@ struct GameView: View {
 
             VStack(spacing: 0) {
                 // Title bar
-                Text("FISH N' SHIPS")
-                    .font(.title2.bold())
-                    .foregroundStyle(.yellow)
-                    .padding(.vertical, 12)
+                Image("asset_game_title")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 60)
+                    .padding(.vertical, 8)
                     .frame(maxWidth: .infinity)
                     .background(Color(hex: 0x0D1F3A))
 

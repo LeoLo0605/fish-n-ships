@@ -54,6 +54,6 @@ final class ReelGridTests: XCTestCase {
         let pearlCount = counts[.pearl, default: 0]
         let clownfishCount = counts[.clownfish, default: 0]
         XCTAssertLessThan(pearlCount, clownfishCount,
-            "Pearl (weight 2) should appear less than clownfish (weight 20)")
+            "Pearl (weight 1) should appear less than clownfish (weight 14)")
     }
 }

@@ -1,6 +1,6 @@
 import SpriteKit
 
-/// A single grid cell. M1: coloured square. M2+: cropped texture from GameSpriteSheet.
+/// A single grid cell. M1: coloured square. M2+: named texture from Assets.xcassets.
 final class SymbolNode: SKSpriteNode {
 
     static let cellSize = CGSize(width: 64, height: 64)
@@ -10,7 +10,7 @@ final class SymbolNode: SKSpriteNode {
     init(symbol: SlotSymbol) {
         self.symbol = symbol
         super.init(texture: nil, color: symbol.placeholderUIColor, size: SymbolNode.cellSize)
-        configure(symbol: symbol, useTexture: false)
+        configure(symbol: symbol)
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("not used") }
@@ -18,12 +18,13 @@ final class SymbolNode: SKSpriteNode {
     /// Call to update this node's symbol.
     /// - Parameters:
     ///   - symbol: The new symbol to display.
-    ///   - useTexture: false (M1) = solid colour square. true (M2+) = cropped spritesheet texture.
-    func configure(symbol: SlotSymbol, useTexture: Bool = false) {
+    ///   - useTexture: true (M2+) = named texture. false = solid colour placeholder.
+    func configure(symbol: SlotSymbol, useTexture: Bool = true) {
         self.symbol = symbol
         if useTexture {
-            // M2+: texture = SymbolCrop.texture(for: symbol)
-            // Crop constants (normalised rects) to be measured from GameSpriteSheet in M2.
+            texture = SKTexture(imageNamed: symbol.imageName)
+            colorBlendFactor = 0
+            size = SymbolNode.cellSize
         } else {
             texture = nil
             color = symbol.placeholderUIColor

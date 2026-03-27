@@ -8,29 +8,26 @@ struct SpinButtonView: View {
     var body: some View {
         HStack(spacing: 16) {
             Button { onBetChange(-1) } label: {
-                Text("BET-")
+                Image("asset_button_bet_down")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 64, height: 44)
-                    .background(Color(hex: 0x0D2244))
-                    .foregroundStyle(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
 
             Button(action: onSpin) {
-                Text("SPIN")
-                    .font(.title3.bold())
+                Image("asset_button_spin")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 52)
-                    .background(canSpin ? Color(hex: 0xC8860A) : Color.gray)
-                    .foregroundStyle(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .opacity(canSpin ? 1.0 : 0.5)
             }
             .disabled(!canSpin)
 
             Button { onBetChange(1) } label: {
-                Text("BET+")
+                Image("asset_button_bet_up")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 64, height: 44)
-                    .background(Color(hex: 0x0D2244))
-                    .foregroundStyle(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
         }
         .padding(.vertical, 12)

@@ -43,7 +43,9 @@ struct WinEngine {
         var wins: [SymbolWin] = []
 
         for symbol in regulars {
-            // The first column must contain the target symbol (Wild alone does not start a run).
+            // Performance prune: if the target symbol is absent from column 0, no left-anchored
+            // run is possible. hasRegularSymbol below independently ensures Wild-only chains
+            // never pay — these two checks are complementary, not redundant.
             guard columns[0].symbols.contains(symbol) else { continue }
 
             var matchCount = 0

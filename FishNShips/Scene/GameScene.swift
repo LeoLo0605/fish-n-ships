@@ -11,7 +11,7 @@ final class GameScene: SKScene {
         static let gridWidth: CGFloat = stride * 5 - gap      // 336 pt
         static let gridHeight: CGFloat = stride * 3 - gap     // 200 pt
         /// Base spin duration for col 0. Must be (N + 0.5) × rowInterval, N ≡ 3 mod 4.
-        static let baseSpinDuration: TimeInterval = 3.0       // N = 7
+        static let baseSpinDuration: TimeInterval = 7.5 * Double(ReelNode.rowInterval)  // N = 7
         /// Extra spin time added per column. Must be a multiple of 4 × rowInterval (= 1.6 s)
         /// so wrapCount stays ≡ 3 mod 4 and finals always land on the correct nodes.
         static let colStopStagger: TimeInterval = 4 * Double(ReelNode.rowInterval) // 1.6 s

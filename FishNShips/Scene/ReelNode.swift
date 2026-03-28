@@ -6,7 +6,7 @@ final class ReelNode: SKCropNode {
     static let cellSize: CGFloat = 64
     static let gap: CGFloat = 4
     static let stride: CGFloat = cellSize + gap  // 68 pt
-    static let rowInterval: CGFloat = 0.40        // seconds per row scroll
+    static let rowInterval: CGFloat = 0.15        // seconds per row scroll
 
     private var symbolNodes: [SymbolNode] = []
     let column: Int

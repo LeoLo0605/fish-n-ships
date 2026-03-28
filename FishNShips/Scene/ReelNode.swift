@@ -8,7 +8,7 @@ final class ReelNode: SKCropNode {
     static let stride: CGFloat = cellSize + gap  // 68 pt
     static let rowInterval: CGFloat = 0.15        // seconds per row scroll
 
-    private var symbolNodes: [SymbolNode] = []
+    private(set) var symbolNodes: [SymbolNode] = []
     let column: Int
 
     init(column: Int, symbols: [SlotSymbol]) {

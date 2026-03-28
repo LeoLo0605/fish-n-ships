@@ -135,6 +135,7 @@ final class GameScene: SKScene {
         }
 
         guard !winningNodes.isEmpty else {
+            for n in nonWinningNodes { n.removeAllActions(); n.alpha = 1.0 }
             viewModel?.winHighlightCompleted()
             return
         }

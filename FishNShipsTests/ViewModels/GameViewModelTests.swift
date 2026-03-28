@@ -127,18 +127,54 @@ final class GameViewModelTests: XCTestCase {
     func test_spin_completed_updates_lastWin() {
         let vm = GameViewModel()
         vm.spin()
+        // Inject a 5-of-a-kind Clownfish grid: row 0 all clownfish, rows 1-2 mixed non-clownfish/non-wild.
+        vm.setGridForTesting([
+            GridCell(row: 0, col: 0, symbol: .clownfish),
+            GridCell(row: 0, col: 1, symbol: .clownfish),
+            GridCell(row: 0, col: 2, symbol: .clownfish),
+            GridCell(row: 0, col: 3, symbol: .clownfish),
+            GridCell(row: 0, col: 4, symbol: .clownfish),
+            GridCell(row: 1, col: 0, symbol: .nine),
+            GridCell(row: 1, col: 1, symbol: .ten),
+            GridCell(row: 1, col: 2, symbol: .jack),
+            GridCell(row: 1, col: 3, symbol: .queen),
+            GridCell(row: 1, col: 4, symbol: .king),
+            GridCell(row: 2, col: 0, symbol: .ten),
+            GridCell(row: 2, col: 1, symbol: .jack),
+            GridCell(row: 2, col: 2, symbol: .queen),
+            GridCell(row: 2, col: 3, symbol: .king),
+            GridCell(row: 2, col: 4, symbol: .ace),
+        ])
         vm.spinCompleted()
-        // lastWin is determined by WinEngine — it should be a non-negative number.
-        XCTAssertGreaterThanOrEqual(vm.lastWin, 0)
+        // 5-of-a-kind Clownfish with bet=1.0 pays 250×1.0 = 250.0
+        XCTAssertEqual(vm.lastWin, 250.0)
     }
 
     func test_spin_completed_adds_to_balance() {
         let vm = GameViewModel()
-        let balanceAfterSpin = vm.balance - vm.bet
         vm.spin()
+        // spin() deducts bet: balance = 1000.0 - 1.0 = 999.0
+        // Inject a 5-of-a-kind Clownfish grid: pays 250×1.0 = 250.0
+        vm.setGridForTesting([
+            GridCell(row: 0, col: 0, symbol: .clownfish),
+            GridCell(row: 0, col: 1, symbol: .clownfish),
+            GridCell(row: 0, col: 2, symbol: .clownfish),
+            GridCell(row: 0, col: 3, symbol: .clownfish),
+            GridCell(row: 0, col: 4, symbol: .clownfish),
+            GridCell(row: 1, col: 0, symbol: .nine),
+            GridCell(row: 1, col: 1, symbol: .ten),
+            GridCell(row: 1, col: 2, symbol: .jack),
+            GridCell(row: 1, col: 3, symbol: .queen),
+            GridCell(row: 1, col: 4, symbol: .king),
+            GridCell(row: 2, col: 0, symbol: .ten),
+            GridCell(row: 2, col: 1, symbol: .jack),
+            GridCell(row: 2, col: 2, symbol: .queen),
+            GridCell(row: 2, col: 3, symbol: .king),
+            GridCell(row: 2, col: 4, symbol: .ace),
+        ])
         vm.spinCompleted()
-        // balance should equal (balance after deduction) + lastWin
-        XCTAssertEqual(vm.balance, balanceAfterSpin + vm.lastWin, accuracy: 0.001)
+        // balance = 999.0 + 250.0 = 1249.0
+        XCTAssertEqual(vm.balance, 1249.0, accuracy: 0.001)
     }
 
     func test_spin_completed_no_win_balance_unchanged() {

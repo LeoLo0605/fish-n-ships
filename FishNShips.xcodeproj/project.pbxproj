@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		02DC7A6AE6FF806C45B0E8FB /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC250E934A75F55E52C5D8EE /* GameViewModelTests.swift */; };
+		1BFDB9AD2960FC5B7E8AC95F /* PayTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AD46BB45B4E447D928C80C /* PayTableTests.swift */; };
+		1E4A42C13A50E791E9798522 /* PayTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCAC290E9C786977D9ECBB /* PayTable.swift */; };
 		2FFB52117BC1C6664E386AC9 /* SlotSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9FD5FB736A5CF54AC14AF0 /* SlotSymbol.swift */; };
 		39C36089EB9F0A73741831C0 /* FishNShipsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494DC97365DB741957C634E9 /* FishNShipsApp.swift */; };
 		3E91E6EF226B23DF0845B623 /* SpinButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2971C7B1C0C070342502BA1 /* SpinButtonView.swift */; };
@@ -21,7 +23,10 @@
 		A4E6E395C8BB6D488D4D17CE /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D8AA0429E94207EA09945 /* SpriteKit.framework */; };
 		A7DFFEA4FB4E78177C5FB4F1 /* ReelGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */; };
 		BFD5C8A5DE5F0A317E4F0E7B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD5F50689BB15AAE656B0D /* GameViewModel.swift */; };
+		C03D80F8C82E9647CDEB53FB /* WinResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6237D1B6C0AC35F8440A406 /* WinResult.swift */; };
 		C76CD984A53401C57B79F523 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB60596ED893EAC28AF03444 /* ContentView.swift */; };
+		DBA2412E8C1BE683B3F9A479 /* WinEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9006E910CDEAE44E47100128 /* WinEngine.swift */; };
+		EBC6A54A974972DECC2C1866 /* WinEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4203EFBEFFFEDAE7243B475 /* WinEngineTests.swift */; };
 		F3D3C47B34C9002379ABA7AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA805B92B1C5E271E54F550B /* GameScene.swift */; };
 		F6344661F1DEC72E8729B272 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A63E916A1C3AF059DD6238 /* GridCell.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00AD46BB45B4E447D928C80C /* PayTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableTests.swift; sourceTree = "<group>"; };
 		018D8AA0429E94207EA09945 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		0DFD5F50689BB15AAE656B0D /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		2051425AF92F5A8D02D0BE23 /* ReelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelNode.swift; sourceTree = "<group>"; };
@@ -46,12 +52,16 @@
 		4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelGrid.swift; sourceTree = "<group>"; };
 		57A63E916A1C3AF059DD6238 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 		591869979388F176FB5D6AAE /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
+		69DCAC290E9C786977D9ECBB /* PayTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTable.swift; sourceTree = "<group>"; };
 		76CC92250AAA928702C8A715 /* SymbolNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolNode.swift; sourceTree = "<group>"; };
-		9BDBC518E99EEE788117AF9D /* FishNShipsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishNShipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFD789D7A6D5A0BF7CE1FD9B /* FishNShips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishNShips.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9006E910CDEAE44E47100128 /* WinEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinEngine.swift; sourceTree = "<group>"; };
+		9BDBC518E99EEE788117AF9D /* FishNShipsTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = FishNShipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFD789D7A6D5A0BF7CE1FD9B /* FishNShips.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FishNShips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2971C7B1C0C070342502BA1 /* SpinButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinButtonView.swift; sourceTree = "<group>"; };
 		BA805B92B1C5E271E54F550B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		BB60596ED893EAC28AF03444 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C4203EFBEFFFEDAE7243B475 /* WinEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinEngineTests.swift; sourceTree = "<group>"; };
+		E6237D1B6C0AC35F8440A406 /* WinResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinResult.swift; sourceTree = "<group>"; };
 		EC250E934A75F55E52C5D8EE /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
 		F4F78FA1F7D974C9585BA49E /* ReelGridTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelGridTests.swift; sourceTree = "<group>"; };
 		FB62F1FEA6417A8DB9AD2FC8 /* SlotSymbolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotSymbolTests.swift; sourceTree = "<group>"; };
@@ -195,8 +205,10 @@
 		EF6F19F087FFB96A2EDDC41F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00AD46BB45B4E447D928C80C /* PayTableTests.swift */,
 				F4F78FA1F7D974C9585BA49E /* ReelGridTests.swift */,
 				FB62F1FEA6417A8DB9AD2FC8 /* SlotSymbolTests.swift */,
+				C4203EFBEFFFEDAE7243B475 /* WinEngineTests.swift */,
 			);
 			name = Models;
 			path = FishNShipsTests/Models;
@@ -206,8 +218,11 @@
 			isa = PBXGroup;
 			children = (
 				57A63E916A1C3AF059DD6238 /* GridCell.swift */,
+				69DCAC290E9C786977D9ECBB /* PayTable.swift */,
 				4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */,
 				FB9FD5FB736A5CF54AC14AF0 /* SlotSymbol.swift */,
+				9006E910CDEAE44E47100128 /* WinEngine.swift */,
+				E6237D1B6C0AC35F8440A406 /* WinResult.swift */,
 			);
 			name = Models;
 			path = FishNShips/Models;
@@ -269,7 +284,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2640;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = B887C4049AF3D84013285F20 /* Build configuration list for PBXProject "FishNShips" */;
 			developmentRegion = en;
@@ -314,11 +331,14 @@
 				BFD5C8A5DE5F0A317E4F0E7B /* GameViewModel.swift in Sources */,
 				F6344661F1DEC72E8729B272 /* GridCell.swift in Sources */,
 				8F237CD2D0C2BCF4C400BAF5 /* HUDView.swift in Sources */,
+				1E4A42C13A50E791E9798522 /* PayTable.swift in Sources */,
 				A7DFFEA4FB4E78177C5FB4F1 /* ReelGrid.swift in Sources */,
 				90D42039F838234201BF74F2 /* ReelNode.swift in Sources */,
 				2FFB52117BC1C6664E386AC9 /* SlotSymbol.swift in Sources */,
 				3E91E6EF226B23DF0845B623 /* SpinButtonView.swift in Sources */,
 				667C0C3EEA7A47328A60760A /* SymbolNode.swift in Sources */,
+				DBA2412E8C1BE683B3F9A479 /* WinEngine.swift in Sources */,
+				C03D80F8C82E9647CDEB53FB /* WinResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,8 +347,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				02DC7A6AE6FF806C45B0E8FB /* GameViewModelTests.swift in Sources */,
+				1BFDB9AD2960FC5B7E8AC95F /* PayTableTests.swift in Sources */,
 				8674B2D30B22D5CCC9BF9C91 /* ReelGridTests.swift in Sources */,
 				52E3A6DB02D528C95D0391B7 /* SlotSymbolTests.swift in Sources */,
+				EBC6A54A974972DECC2C1866 /* WinEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +418,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -416,7 +437,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -510,7 +530,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -537,7 +556,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

@@ -148,6 +148,7 @@ final class GameViewModelTests: XCTestCase {
         vm.spinCompleted()
         // 5-of-a-kind Clownfish with bet=1.0 pays 250×1.0 = 250.0
         XCTAssertEqual(vm.lastWin, 250.0)
+        XCTAssertTrue(vm.isSpinning, "isSpinning should remain true until winHighlightCompleted() is called")
     }
 
     func test_spin_completed_adds_to_balance() {
@@ -175,6 +176,35 @@ final class GameViewModelTests: XCTestCase {
         vm.spinCompleted()
         // balance = 999.0 + 250.0 = 1249.0
         XCTAssertEqual(vm.balance, 1249.0, accuracy: 0.001)
+        XCTAssertTrue(vm.isSpinning, "isSpinning should remain true until winHighlightCompleted() is called")
+    }
+
+    func test_winHighlightCompleted_clears_isSpinning() {
+        let vm = GameViewModel()
+        vm.spin()
+        // Inject a 5-of-a-kind Clownfish grid so spinCompleted() holds isSpinning.
+        vm.setGridForTesting([
+            GridCell(row: 0, col: 0, symbol: .clownfish),
+            GridCell(row: 0, col: 1, symbol: .clownfish),
+            GridCell(row: 0, col: 2, symbol: .clownfish),
+            GridCell(row: 0, col: 3, symbol: .clownfish),
+            GridCell(row: 0, col: 4, symbol: .clownfish),
+            GridCell(row: 1, col: 0, symbol: .nine),
+            GridCell(row: 1, col: 1, symbol: .ten),
+            GridCell(row: 1, col: 2, symbol: .jack),
+            GridCell(row: 1, col: 3, symbol: .queen),
+            GridCell(row: 1, col: 4, symbol: .king),
+            GridCell(row: 2, col: 0, symbol: .ten),
+            GridCell(row: 2, col: 1, symbol: .jack),
+            GridCell(row: 2, col: 2, symbol: .queen),
+            GridCell(row: 2, col: 3, symbol: .king),
+            GridCell(row: 2, col: 4, symbol: .ace),
+        ])
+        vm.spinCompleted()
+        XCTAssertTrue(vm.isSpinning)       // spin lock held
+
+        vm.winHighlightCompleted()
+        XCTAssertFalse(vm.isSpinning)      // now released
     }
 
     func test_spin_completed_no_win_balance_unchanged() {

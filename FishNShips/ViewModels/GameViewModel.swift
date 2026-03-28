@@ -43,6 +43,11 @@ final class GameViewModel: ObservableObject {
         }
     }
 
+    /// Called by the scene after the win-highlight animation finishes.
+    func winHighlightCompleted() {
+        isSpinning = false
+    }
+
     func adjustBet(_ delta: Int) {
         guard let currentIndex = betSteps.firstIndex(of: bet) else { return }
         let newIndex = max(0, min(betSteps.count - 1, currentIndex + delta))

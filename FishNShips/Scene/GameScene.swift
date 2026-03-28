@@ -4,7 +4,7 @@ final class GameScene: SKScene {
 
     // MARK: - Layout constants
 
-    private enum Layout {
+    @MainActor private enum Layout {
         static let cellSize: CGFloat = ReelNode.cellSize
         static let gap: CGFloat = ReelNode.gap
         static let stride: CGFloat = ReelNode.stride          // 68 pt

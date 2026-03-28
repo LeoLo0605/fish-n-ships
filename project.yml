@@ -35,8 +35,8 @@ targets:
         group: Views
       - path: FishNShips/Scene
         group: Scene
-    resources:
       - path: FishNShips/Assets.xcassets
+        group: Resources
     dependencies:
       - sdk: SpriteKit.framework
     settings:

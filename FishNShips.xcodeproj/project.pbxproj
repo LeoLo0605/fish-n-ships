@@ -17,6 +17,7 @@
 		8F237CD2D0C2BCF4C400BAF5 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591869979388F176FB5D6AAE /* HUDView.swift */; };
 		90D42039F838234201BF74F2 /* ReelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2051425AF92F5A8D02D0BE23 /* ReelNode.swift */; };
 		951B10588BBCCE579052A26D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B100F3C2056F3B8B4961C0E /* GameView.swift */; };
+		97365272ABF7FE7A07F36B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4910D12694A20F75749169F0 /* Assets.xcassets */; };
 		A4E6E395C8BB6D488D4D17CE /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018D8AA0429E94207EA09945 /* SpriteKit.framework */; };
 		A7DFFEA4FB4E78177C5FB4F1 /* ReelGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */; };
 		BFD5C8A5DE5F0A317E4F0E7B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD5F50689BB15AAE656B0D /* GameViewModel.swift */; };
@@ -40,6 +41,7 @@
 		0DFD5F50689BB15AAE656B0D /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		2051425AF92F5A8D02D0BE23 /* ReelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelNode.swift; sourceTree = "<group>"; };
 		2B100F3C2056F3B8B4961C0E /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		4910D12694A20F75749169F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = FishNShips/Assets.xcassets; sourceTree = "<group>"; };
 		494DC97365DB741957C634E9 /* FishNShipsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishNShipsApp.swift; sourceTree = "<group>"; };
 		4E152B58FC41B2BE45A25E69 /* ReelGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelGrid.swift; sourceTree = "<group>"; };
 		57A63E916A1C3AF059DD6238 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
@@ -106,11 +108,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		72E8C797E51AD7705320D369 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4910D12694A20F75749169F0 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		7A991B2ADA9288CA7E6C6D75 = {
 			isa = PBXGroup;
 			children = (
 				E657A2DCDD4EB27A0BAFB170 /* App */,
 				FD42E233B2E341967FE49155 /* Models */,
+				72E8C797E51AD7705320D369 /* Resources */,
 				99412ED88D9B7B7D8DA94945 /* Scene */,
 				42EF13C5F03C53EBE7A54931 /* ViewModels */,
 				1397354028A1FD7759E223E7 /* Views */,
@@ -237,6 +248,7 @@
 			buildConfigurationList = 20157CCC761C8D388AAC971B /* Build configuration list for PBXNativeTarget "FishNShips" */;
 			buildPhases = (
 				9C4867C1F93AD06CE9E81BF1 /* Sources */,
+				157D1A9E032B4AFAAE536C2B /* Resources */,
 				6A2F3E626451CDF7E693EF5E /* Frameworks */,
 			);
 			buildRules = (
@@ -280,6 +292,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		157D1A9E032B4AFAAE536C2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97365272ABF7FE7A07F36B75 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9C4867C1F93AD06CE9E81BF1 /* Sources */ = {

@@ -90,19 +90,19 @@ final class WinEngineTests: XCTestCase {
     }
 
     func test_all_wilds_no_payout() {
-        // 3 columns of only Wilds — no regular symbol → no win
+        // All 15 cells are Wild — hasRegularSymbol stays false for every symbol → no win
         let grid = makeGrid([
-            [.wild, .wild, .wild, .octopus, .ace],
-            [.wild, .wild, .wild, .queen,   .king],
-            [.wild, .wild, .wild, .jack,    .ten],
+            [.wild, .wild, .wild, .wild, .wild],
+            [.wild, .wild, .wild, .wild, .wild],
+            [.wild, .wild, .wild, .wild, .wild],
         ])
         let result = WinEngine.evaluate(grid: grid, bet: 1.0)
         XCTAssertTrue(result.symbolWins.isEmpty)
     }
 
-    func test_wild_column_zero_does_not_anchor_absent_symbol() {
-        // Col 0: only Wilds (no clownfish). Clownfish in cols 1-4.
-        // Wild-only col 0 must not anchor a clownfish run — the symbol must appear in col 0.
+    func test_wild_in_col0_anchors_symbol_in_subsequent_columns() {
+        // Col 0: only Wilds. Clownfish in cols 1-3, different symbol in col 4.
+        // Wild extends the run — clownfish appears in a matched column → valid 4-match win.
         let grid = makeGrid([
             [.wild, .clownfish, .clownfish, .clownfish, .nine],
             [.wild, .clownfish, .clownfish, .clownfish, .ten],
@@ -110,7 +110,9 @@ final class WinEngineTests: XCTestCase {
         ])
         let result = WinEngine.evaluate(grid: grid, bet: 1.0)
         let clownfishWins = result.symbolWins.filter { $0.symbol == .clownfish }
-        XCTAssertTrue(clownfishWins.isEmpty, "Wild-only column 0 must not anchor a clownfish run")
+        XCTAssertEqual(clownfishWins.count, 1)
+        XCTAssertEqual(clownfishWins[0].matchCount, 4) // cols 0-3
+        XCTAssertEqual(clownfishWins[0].payout, 50.0)  // 50× × bet 1.0
     }
 
     func test_multiple_wins_same_spin() {

@@ -35,6 +35,24 @@ final class GameViewModelTests: XCTestCase {
     func test_spinCompleted_clears_isSpinning() {
         let vm = GameViewModel()
         vm.spin()
+        // Force a no-win grid so isSpinning clears immediately (no highlight delay).
+        vm.setGridForTesting([
+            GridCell(row: 0, col: 0, symbol: .clownfish),
+            GridCell(row: 0, col: 1, symbol: .octopus),
+            GridCell(row: 0, col: 2, symbol: .seaTurtle),
+            GridCell(row: 0, col: 3, symbol: .blueTang),
+            GridCell(row: 0, col: 4, symbol: .ace),
+            GridCell(row: 1, col: 0, symbol: .king),
+            GridCell(row: 1, col: 1, symbol: .queen),
+            GridCell(row: 1, col: 2, symbol: .jack),
+            GridCell(row: 1, col: 3, symbol: .ten),
+            GridCell(row: 1, col: 4, symbol: .nine),
+            GridCell(row: 2, col: 0, symbol: .nine),
+            GridCell(row: 2, col: 1, symbol: .ten),
+            GridCell(row: 2, col: 2, symbol: .king),
+            GridCell(row: 2, col: 3, symbol: .queen),
+            GridCell(row: 2, col: 4, symbol: .jack),
+        ])
         vm.spinCompleted()
         XCTAssertFalse(vm.isSpinning)
     }
@@ -102,5 +120,52 @@ final class GameViewModelTests: XCTestCase {
         vm.onSpinRequested = { fired = true }
         vm.spin()
         XCTAssertTrue(fired)
+    }
+
+    // MARK: - Win evaluation (M3)
+
+    func test_spin_completed_updates_lastWin() {
+        let vm = GameViewModel()
+        vm.spin()
+        vm.spinCompleted()
+        // lastWin is determined by WinEngine — it should be a non-negative number.
+        XCTAssertGreaterThanOrEqual(vm.lastWin, 0)
+    }
+
+    func test_spin_completed_adds_to_balance() {
+        let vm = GameViewModel()
+        let balanceAfterSpin = vm.balance - vm.bet
+        vm.spin()
+        vm.spinCompleted()
+        // balance should equal (balance after deduction) + lastWin
+        XCTAssertEqual(vm.balance, balanceAfterSpin + vm.lastWin, accuracy: 0.001)
+    }
+
+    func test_spin_completed_no_win_balance_unchanged() {
+        // Force a grid that produces no wins: unique symbol per column.
+        let vm = GameViewModel()
+        vm.spin()
+        // Manually override grid with a no-win arrangement.
+        vm.setGridForTesting([
+            GridCell(row: 0, col: 0, symbol: .clownfish),
+            GridCell(row: 0, col: 1, symbol: .octopus),
+            GridCell(row: 0, col: 2, symbol: .seaTurtle),
+            GridCell(row: 0, col: 3, symbol: .blueTang),
+            GridCell(row: 0, col: 4, symbol: .ace),
+            GridCell(row: 1, col: 0, symbol: .king),
+            GridCell(row: 1, col: 1, symbol: .queen),
+            GridCell(row: 1, col: 2, symbol: .jack),
+            GridCell(row: 1, col: 3, symbol: .ten),
+            GridCell(row: 1, col: 4, symbol: .nine),
+            GridCell(row: 2, col: 0, symbol: .nine),
+            GridCell(row: 2, col: 1, symbol: .ten),
+            GridCell(row: 2, col: 2, symbol: .king),
+            GridCell(row: 2, col: 3, symbol: .queen),
+            GridCell(row: 2, col: 4, symbol: .jack),
+        ])
+        let balanceBefore = vm.balance
+        vm.spinCompleted()
+        XCTAssertEqual(vm.lastWin, 0)
+        XCTAssertEqual(vm.balance, balanceBefore)
     }
 }

@@ -44,6 +44,10 @@ final class GameScene: SKScene {
             guard let self else { return }
             self.startSpinAnimation()
         }
+        vm.onWinHighlight = { [weak self] cellIndices in
+            guard let self else { return }
+            self.highlightWinningCells(cellIndices)
+        }
     }
 
     private func buildGrid(initialGrid: [GridCell]? = nil) {
@@ -106,5 +110,49 @@ final class GameScene: SKScene {
 
     private func animationDidFinish() {
         viewModel?.spinCompleted()
+    }
+
+    // MARK: - Win Highlight
+
+    func highlightWinningCells(_ cellIndices: Set<Int>) {
+        var winningNodes: [SymbolNode] = []
+        var nonWinningNodes: [SymbolNode] = []
+
+        for col in 0..<5 {
+            for row in 0..<3 {
+                let idx = row * 5 + col
+                let node = reelNodes[col].symbolNodes[row]
+                if cellIndices.contains(idx) {
+                    winningNodes.append(node)
+                } else {
+                    nonWinningNodes.append(node)
+                }
+            }
+        }
+
+        for node in nonWinningNodes {
+            node.run(SKAction.fadeAlpha(to: 0.4, duration: 0.1))
+        }
+
+        guard !winningNodes.isEmpty else {
+            viewModel?.winHighlightCompleted()
+            return
+        }
+
+        let pulse = SKAction.sequence([
+            SKAction.scale(to: 1.15, duration: 0.15),
+            SKAction.scale(to: 1.0,  duration: 0.15)
+        ])
+
+        for (i, node) in winningNodes.enumerated() {
+            if i == winningNodes.count - 1 {
+                node.run(pulse) { [weak self] in
+                    for n in nonWinningNodes { n.alpha = 1.0 }
+                    self?.viewModel?.winHighlightCompleted()
+                }
+            } else {
+                node.run(pulse)
+            }
+        }
     }
 }

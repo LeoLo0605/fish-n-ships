@@ -42,47 +42,58 @@ final class ReelNode: SKCropNode {
     // MARK: - Spin Animation
 
     /// Plays the spin animation for this reel.
+    /// Symbols scroll downward continuously (slot-machine reel effect), then snap to final symbols.
     /// - Parameters:
-    ///   - finalSymbols: The 3 symbols to snap to at the end (top→bottom).
+    ///   - finalSymbols: The 3 symbols to display at rest (top→bottom).
     ///   - delay: Stagger delay before this reel starts (col * 0.15 s).
     ///   - completion: Called when the animation finishes.
     func spinAnimation(finalSymbols: [SlotSymbol], delay: TimeInterval, completion: @escaping () -> Void) {
-        let cycleColors = SlotSymbol.allCases.map { $0.placeholderUIColor }
-        var colorIndex = 0
-        let cycleKey = "spin-cycle-\(column)"
+        let spinDuration: TimeInterval = 0.9
+        // Scroll speed: 1 row (stride) per 0.12 s.
+        let scrollSpeed: CGFloat = ReelNode.stride / 0.12
 
-        // Main sequence — cycle is run separately so it can be stopped independently
+        // Add a buffer node above the visible window so the strip is always full
+        // while symbols scroll down and wrap around.
+        let buffer = SymbolNode(symbol: SlotSymbol.allCases.randomElement()!)
+        buffer.position = CGPoint(x: 0, y: ReelNode.stride * 2)
+        addChild(buffer)
+
+        // 4-node strip: 3 visible (symbolNodes) + 1 above the crop window (buffer).
+        let nodes: [SymbolNode] = symbolNodes + [buffer]
+        var scrolled: CGFloat = 0
+        // Nodes below this threshold are outside the crop window bottom and need wrapping.
+        let bottomCut: CGFloat = -ReelNode.stride * 1.5
+
+        // Per-frame scroll: moves nodes down by delta, wraps any that exit the bottom.
+        let scrollAction = SKAction.customAction(withDuration: spinDuration) { _, elapsed in
+            let target = elapsed * scrollSpeed
+            let delta = target - scrolled
+            guard delta > 0 else { return }
+            scrolled = target
+
+            nodes.forEach { $0.position.y -= delta }
+
+            for node in nodes where node.position.y < bottomCut {
+                let topY = nodes.max(by: { $0.position.y < $1.position.y })?.position.y ?? 0
+                node.position = CGPoint(x: 0, y: topY + ReelNode.stride)
+                node.configure(symbol: SlotSymbol.allCases.randomElement()!)
+            }
+        }
+
         let sequence = SKAction.sequence([
-            // Wait for stagger
             SKAction.wait(forDuration: delay),
-            // Start color-cycling on a separate action key
+            scrollAction,
             SKAction.run { [weak self] in
                 guard let self else { return }
-                let cycle = SKAction.repeatForever(
-                    SKAction.sequence([
-                        SKAction.run { [weak self] in
-                            colorIndex = (colorIndex + 1) % cycleColors.count
-                            self?.symbolNodes.forEach {
-                                $0.color = cycleColors[colorIndex]
-                                $0.colorBlendFactor = 1.0
-                            }
-                        },
-                        SKAction.wait(forDuration: 0.06)
-                    ])
-                )
-                self.run(cycle, withKey: cycleKey)
+                buffer.removeFromParent()
+                // Reset the 3 visible nodes to canonical positions with final symbols.
+                for (i, sym) in finalSymbols.prefix(3).enumerated() {
+                    self.symbolNodes[i].position = CGPoint(x: 0, y: CGFloat(1 - i) * ReelNode.stride)
+                    self.symbolNodes[i].configure(symbol: sym)
+                }
             },
-            // Fast cycling phase (0.9 s)
-            SKAction.wait(forDuration: 0.9),
-            // Stop cycle and snap to final symbols (useTexture: true reveals sprites)
-            SKAction.run { [weak self] in
-                self?.removeAction(forKey: cycleKey)
-                self?.updateSymbols(finalSymbols)
-            },
-            // Bounce: scale up slightly then back
             SKAction.scale(to: 1.06, duration: 0.05),
             SKAction.scale(to: 1.0,  duration: 0.07),
-            // Signal done
             SKAction.run { completion() }
         ])
 

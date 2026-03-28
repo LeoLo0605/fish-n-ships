@@ -23,6 +23,7 @@ final class SymbolNode: SKSpriteNode {
         self.symbol = symbol
         if useTexture {
             texture = SKTexture(imageNamed: symbol.imageName)
+            color = .white          // reset from placeholder color; prevents tint bleed
             colorBlendFactor = 0
             size = SymbolNode.cellSize
         } else {

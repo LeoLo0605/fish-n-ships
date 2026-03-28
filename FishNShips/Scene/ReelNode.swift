@@ -52,9 +52,18 @@ final class ReelNode: SKCropNode {
         // Scroll speed: 1 row (stride) per 0.12 s.
         let scrollSpeed: CGFloat = ReelNode.stride / 0.12
 
+        // Pre-calculate symbol queue so the final symbols naturally scroll into view.
+        // Wraps happen at ~0.12 s intervals; 7 wraps occur during spinDuration.
+        // Wraps 5, 6, 7 deliver finalSymbols[2], [1], [0] to node2, node1, node0.
+        let symbolQueue: [SlotSymbol] =
+            (0..<5).map { _ in SlotSymbol.allCases.randomElement()! }
+            + [finalSymbols[2], finalSymbols[1], finalSymbols[0]]
+        var queueIdx = 0
+
         // Add a buffer node above the visible window so the strip is always full
         // while symbols scroll down and wrap around.
-        let buffer = SymbolNode(symbol: SlotSymbol.allCases.randomElement()!)
+        let buffer = SymbolNode(symbol: symbolQueue[queueIdx])
+        queueIdx += 1
         buffer.position = CGPoint(x: 0, y: ReelNode.stride * 2)
         addChild(buffer)
 
@@ -64,7 +73,7 @@ final class ReelNode: SKCropNode {
         // Nodes below this threshold are outside the crop window bottom and need wrapping.
         let bottomCut: CGFloat = -ReelNode.stride * 1.5
 
-        // Per-frame scroll: moves nodes down by delta, wraps any that exit the bottom.
+        // Per-frame scroll: moves nodes down by delta, wraps the single lowest node that exits bottom.
         let scrollAction = SKAction.customAction(withDuration: spinDuration) { _, elapsed in
             let target = elapsed * scrollSpeed
             let delta = target - scrolled
@@ -73,10 +82,13 @@ final class ReelNode: SKCropNode {
 
             nodes.forEach { $0.position.y -= delta }
 
-            for node in nodes where node.position.y < bottomCut {
+            // Only wrap one node per frame to preserve queue ordering.
+            if let lowest = nodes.filter({ $0.position.y < bottomCut }).min(by: { $0.position.y < $1.position.y }) {
                 let topY = nodes.max(by: { $0.position.y < $1.position.y })?.position.y ?? 0
-                node.position = CGPoint(x: 0, y: topY + ReelNode.stride)
-                node.configure(symbol: SlotSymbol.allCases.randomElement()!)
+                lowest.position = CGPoint(x: 0, y: topY + ReelNode.stride)
+                let sym = queueIdx < symbolQueue.count ? symbolQueue[queueIdx] : SlotSymbol.allCases.randomElement()!
+                queueIdx += 1
+                lowest.configure(symbol: sym)
             }
         }
 
@@ -86,10 +98,9 @@ final class ReelNode: SKCropNode {
             SKAction.run { [weak self] in
                 guard let self else { return }
                 buffer.removeFromParent()
-                // Reset the 3 visible nodes to canonical positions with final symbols.
-                for (i, sym) in finalSymbols.prefix(3).enumerated() {
+                // Snap positions only — symbols are already correct from the queue.
+                for i in 0..<3 {
                     self.symbolNodes[i].position = CGPoint(x: 0, y: CGFloat(1 - i) * ReelNode.stride)
-                    self.symbolNodes[i].configure(symbol: sym)
                 }
             },
             SKAction.scale(to: 1.06, duration: 0.05),

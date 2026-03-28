@@ -6,6 +6,7 @@ final class ReelNode: SKCropNode {
     static let cellSize: CGFloat = 64
     static let gap: CGFloat = 4
     static let stride: CGFloat = cellSize + gap  // 68 pt
+    static let rowInterval: CGFloat = 0.40        // seconds per row scroll
 
     private var symbolNodes: [SymbolNode] = []
     let column: Int
@@ -45,23 +46,27 @@ final class ReelNode: SKCropNode {
     /// Symbols scroll downward continuously (slot-machine reel effect), then snap to final symbols.
     /// - Parameters:
     ///   - finalSymbols: The 3 symbols to display at rest (top→bottom).
-    ///   - delay: Stagger delay before this reel starts (col * 0.15 s).
+    ///   - delay: Stagger delay before this reel starts.
+    ///   - spinDuration: Total scroll time. Must equal (N + 0.5) × rowInterval where N ≡ 3 mod 4
+    ///     (N = 7, 11, 15, …) so the last 3 wraps land on node2 → node1 → node0 in order.
     ///   - completion: Called when the animation finishes.
-    func spinAnimation(finalSymbols: [SlotSymbol], delay: TimeInterval, completion: @escaping () -> Void) {
-        let spinDuration: TimeInterval = 0.9
-        // Scroll speed: 1 row (stride) per 0.12 s.
-        let scrollSpeed: CGFloat = ReelNode.stride / 0.12
+    func spinAnimation(finalSymbols: [SlotSymbol], delay: TimeInterval, spinDuration: TimeInterval, completion: @escaping () -> Void) {
+        let scrollSpeed: CGFloat = ReelNode.stride / ReelNode.rowInterval
 
-        // Pre-calculate symbol queue so the final symbols naturally scroll into view.
-        // Wraps happen at ~0.12 s intervals; 7 wraps occur during spinDuration.
-        // Wraps 5, 6, 7 deliver finalSymbols[2], [1], [0] to node2, node1, node0.
-        let symbolQueue: [SlotSymbol] =
-            (0..<5).map { _ in SlotSymbol.allCases.randomElement()! }
-            + [finalSymbols[2], finalSymbols[1], finalSymbols[0]]
+        // Compute how many node-wraps occur during spinDuration.
+        // Wraps happen at total scroll: stride/2, 3·stride/2, 5·stride/2, …
+        // wrapCount = number of those thresholds strictly less than totalScroll.
+        let totalScroll = CGFloat(spinDuration) * scrollSpeed
+        let wrapCount = Int((totalScroll - ReelNode.stride / 2) / ReelNode.stride)
+
+        // Symbol queue: queue[0] initialises the buffer node; queue[k] is assigned on the k-th wrap.
+        // The last 3 wraps (indices wrapCount-2, wrapCount-1, wrapCount) target node2, node1, node0.
+        // All earlier wraps receive random symbols.
+        var symbolQueue = (0..<(wrapCount - 2)).map { _ in SlotSymbol.allCases.randomElement()! }
+        symbolQueue += [finalSymbols[2], finalSymbols[1], finalSymbols[0]]
         var queueIdx = 0
 
-        // Add a buffer node above the visible window so the strip is always full
-        // while symbols scroll down and wrap around.
+        // Add a buffer node above the visible window so the strip is always full.
         let buffer = SymbolNode(symbol: symbolQueue[queueIdx])
         queueIdx += 1
         buffer.position = CGPoint(x: 0, y: ReelNode.stride * 2)
@@ -70,7 +75,6 @@ final class ReelNode: SKCropNode {
         // 4-node strip: 3 visible (symbolNodes) + 1 above the crop window (buffer).
         let nodes: [SymbolNode] = symbolNodes + [buffer]
         var scrolled: CGFloat = 0
-        // Nodes below this threshold are outside the crop window bottom and need wrapping.
         let bottomCut: CGFloat = -ReelNode.stride * 1.5
 
         // Per-frame scroll: moves nodes down by delta, wraps the single lowest node that exits bottom.
